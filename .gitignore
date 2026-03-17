@@ -1,0 +1,11 @@
+﻿node_modules/
+venv/
+db.sqlite3
+build/
+__pycache__/
+*.pyc
+.env
+.vscode/
+Thumbs.db
+.DS_Store
+media/

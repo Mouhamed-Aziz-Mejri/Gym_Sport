@@ -1,0 +1,10 @@
+import api from './axios';
+export const getCourses = (params) => api.get('/courses/', { params });
+export const getCourse = (id) => api.get(`/courses/${id}/`);
+export const createCourse = (data) => api.post('/courses/create/', data);
+export const updateCourse = (id, data) => api.put(`/courses/${id}/`, data);
+export const deleteCourse = (id) => api.delete(`/courses/${id}/`);
+export const enrollCourse = (id) => api.post(`/courses/${id}/enroll/`);
+export const unenrollCourse = (id) => api.delete(`/courses/${id}/unenroll/`);
+export const getMyEnrollments = () => api.get('/courses/my-enrollments/');
+export const getCourseEnrollments = (courseId) => api.get(`/courses/${courseId}/enrollments/`);

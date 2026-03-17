@@ -1,0 +1,10 @@
+import api from './axios';
+export const login = (data) => api.post('/auth/login/', data);
+export const register = (data) => api.post('/auth/register/', data);
+export const getMe = () => api.get('/auth/me/');
+export const updateMe = (data) => api.put('/auth/me/', data);
+export const changePassword = (data) => api.post('/auth/change-password/', data);
+export const getUsers = (params) => api.get('/auth/users/', { params });
+export const createCoach = (data) => api.post('/auth/users/create-coach/', data);
+export const deleteUser = (id) => api.delete(`/auth/users/${id}/`);
+export const updateUser = (id, data) => api.put(`/auth/users/${id}/`, data);
