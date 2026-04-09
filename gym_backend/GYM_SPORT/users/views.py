@@ -2,6 +2,7 @@ from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from django.contrib.auth import get_user_model
 
 from .serializers import (
@@ -21,9 +22,24 @@ class RegisterView(generics.CreateAPIView):
 
 
 class LoginView(TokenObtainPairView):
-    """Login → retourne access + refresh + user info"""
+    """Login → retourne access + refresh + user info
+    Retourne un message d'erreur clair si les identifiants sont incorrects.
+    """
     serializer_class = CustomTokenObtainPairSerializer
     permission_classes = [permissions.AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+        except Exception:
+            return Response(
+                {'detail': 'Email ou mot de passe incorrect. Veuillez réessayer.'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 
 class MeView(generics.RetrieveUpdateAPIView):
@@ -35,7 +51,6 @@ class MeView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
     def update(self, request, *args, **kwargs):
-        # Force partial=True so missing fields are not required
         kwargs['partial'] = True
         return super().update(request, *args, **kwargs)
 

@@ -162,3 +162,47 @@
   .auth-left { display: none; }
   .auth-row  { grid-template-columns: 1fr; }
 }
+
+/* ── Inline error message ─────────────────────────── */
+.auth-input-error {
+  border-color: #E24B4A !important;
+  background: #fff8f8 !important;
+}
+
+.auth-error-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff2f2;
+  border: 0.5px solid #f0c0c0;
+  border-left: 3px solid #E24B4A;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #A32D2D;
+  animation: errorShake 0.3s ease;
+}
+
+.auth-error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #E24B4A;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@keyframes errorShake {
+  0%  { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100%{ transform: translateX(0); }
+}
