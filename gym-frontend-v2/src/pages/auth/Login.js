@@ -95,20 +95,7 @@ const Login = () => {
             Pas de compte ? <Link to="/register">Créer un compte</Link>
           </p>
 
-          <div className="auth-demo">
-            <div className="auth-demo-title">Comptes de test</div>
-            {[
-              { role: 'Admin',  email: 'admin@gym.com',   pwd: 'admin123' },
-              { role: 'Coach',  email: 'karim@gym.com',   pwd: 'coach123' },
-              { role: 'Client', email: 'client1@gym.com', pwd: 'client123' },
-            ].map(d => (
-              <button key={d.role} className="auth-demo-btn"
-                onClick={() => { setForm({ email: d.email, password: d.pwd }); setError(''); }}>
-                <span className="auth-demo-role">{d.role}</span>
-                <span className="auth-demo-email">{d.email}</span>
-              </button>
-            ))}
-          </div>
+          
 
         </div>
       </div>
