@@ -31,9 +31,9 @@ admin, _ = User.objects.get_or_create(
         'is_superuser': True,
     }
 )
-admin.set_password('admin123')
+admin.set_password('HK@dm!n#2026$Gym')
 admin.save()
-print(f"  ✅ Admin: {admin.email} / admin123")
+print(f"  ✅ Admin: {admin.email} / HK@dm!n#2026$Gym")
 
 # ── Coaches ───────────────────────────────────────────────────────────────────
 coaches_data = [
@@ -70,7 +70,7 @@ for c in coaches_data:
         email=c['email'],
         defaults={**c, 'role': 'coach'}
     )
-    user.set_password('coach123')
+    user.set_password('C0@ch!Gym#2026$K')
     user.save()
     CoachProfile.objects.get_or_create(user=user, defaults=profile_data)
 
@@ -81,7 +81,7 @@ for c in coaches_data:
             defaults={'start_time': time(8, 0), 'end_time': time(18, 0)}
         )
     coach_objects.append(user)
-    print(f"  ✅ Coach: {user.email} / coach123")
+    print(f"  ✅ Coach: {user.email} / C0@ch!Gym#2026$K")
 
 # ── Clients ───────────────────────────────────────────────────────────────────
 clients_data = [
@@ -96,10 +96,10 @@ for c in clients_data:
         email=c['email'],
         defaults={**c, 'role': 'client'}
     )
-    user.set_password('client123')
+    user.set_password('C0@cl1!Gym#2026$K')
     user.save()
     client_objects.append(user)
-    print(f"  ✅ Client: {user.email} / client123")
+    print(f"  ✅ Client: {user.email} / C0@cl1!Gym#2026$K")
 
 # ── Courses ───────────────────────────────────────────────────────────────────
 today = date.today()
@@ -159,9 +159,9 @@ for rd in reservations_data:
 
 print("\n🎉 Seeding terminé!")
 print("\n📋 Comptes de test:")
-print("  Admin  → admin@gym.com     / admin123")
-print("  Coach  → karim@gym.com     / coach123")
-print("  Coach  → sarra@gym.com     / coach123")
-print("  Coach  → ahmed@gym.com     / coach123")
-print("  Client → client1@gym.com   / client123")
-print("  Client → client2@gym.com   / client123")
+print("  Admin  → admin@gym.com     / HK@dm!n#2026$Gym")
+print("  Coach  → karim@gym.com     / C0@chK!Gym#2026$K")
+print("  Coach  → sarra@gym.com     / C0@chS!Gym#2026$K")
+print("  Coach  → ahmed@gym.com     / C0@chA!Gym#2026$K")
+print("  Client → client1@gym.com   / C0@cl1!Gym#2026$K")
+print("  Client → client2@gym.com   / C0@cl2!Gym#2026$K")
